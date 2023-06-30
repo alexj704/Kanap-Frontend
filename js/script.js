@@ -1,4 +1,6 @@
 // Récupation des infos produits grâce à l'API
+const loader = document.querySelector(".loader");
+
 fetch("https://kanap-backend-k6sk.onrender.com/api/products")
   .then((response) => response.json())
   // Ajout des items contenant les infos produit sur la page d'acceuil
@@ -29,6 +31,7 @@ fetch("https://kanap-backend-k6sk.onrender.com/api/products")
         .setAttribute("class", "productDescription");
       description.textContent = product.description;
     }
+    loader.style.display = "none";
   })
   .catch((error) => {
     console.error(error);
